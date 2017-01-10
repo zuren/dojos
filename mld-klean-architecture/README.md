@@ -6,6 +6,7 @@
 
 # Initial steps
 
-1. Import project as gradle project 
-2. Find + Run Gradle task  verification > test
-3. Go!
+1. Open project directory with IntelliJ
+2. In the import project window tick "Auto Import"
+3. Find + Run Gradle task  verification > test
+4. Go!
