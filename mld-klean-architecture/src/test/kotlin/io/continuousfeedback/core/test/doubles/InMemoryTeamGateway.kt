@@ -11,7 +11,7 @@ class InMemoryTeamGateway : TeamGateway {
         return null
     }
 
-    override fun all(): List<TeamMember> = teamMembers.toList()
+    override fun getAll(): List<TeamMember> = teamMembers.toList()
 
     fun save(teamMember: TeamMember) {
         teamMembers.add(teamMember)

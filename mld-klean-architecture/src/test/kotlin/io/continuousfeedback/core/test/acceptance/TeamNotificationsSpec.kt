@@ -22,7 +22,7 @@ object TeamNotificationsSpec : Spek({
     describe("notifying team members about a request for feedback") {
         val notifications: MutableList<Notification> = mutableListOf()
         val errors: MutableList<Error> = mutableListOf()
-        beforeEachTest {
+        beforeGroup {
             notifications.clear()
             errors.clear()
         }
@@ -34,7 +34,6 @@ object TeamNotificationsSpec : Spek({
             )
             useCase.execute(Request(id), presenter)
         }
-
 
         given("five team members") {
             val teamMembers: Map<Int, String> = mapOf(
@@ -56,13 +55,12 @@ object TeamNotificationsSpec : Spek({
             }
 
             context("when feedback receiver id is invalid") {
-                beforeEachTest { execute(id = 9001) }
+                beforeGroup { execute(id = 9001) }
                 it("should present an error") { errors.first().should.be.equal(RECEIVER_NOT_FOUND) }
             }
 
             context("when feedback receiver id is valid") {
-                beforeEachTest { execute(id = 1) }
-
+                beforeGroup { execute(id = 1) }
                 it("should notify five team members to give feedback") { notifications.size.should.equal(5) }
                 it("should have the correct email addresses") {
                     listOf(
