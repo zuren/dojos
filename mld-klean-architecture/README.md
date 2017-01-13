@@ -33,7 +33,7 @@ An "testing assumptions" analysis has been performed already for you, and is in 
     2. Search "Spek"
     3. Install
     4. Restart IntelliJ
-6. Make sure "View > Tool buttons" is enabled
-7. Find the Gradle toolbar on the right hand side
-8. Run the Gradle task "Verification > test"
+6. Open "src > test > kotlin" in the left hand project navigator
+7. Right click "io.continuousfeedback.core.test" 
+8. and "Run 'Specs in io.continu..'"
 9. If you get a non-zero number of passing tests, you're good to go! Hurray!
