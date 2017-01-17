@@ -30,7 +30,8 @@ An "testing assumptions" analysis has been performed already for you, and is in 
 4. Open project directory within the git repo "mld-klean-architecture" with IntelliJ
 5. In the import project window that opens tick "Auto Import", you should also be using Gradle Wrapper configuration
 6. Inside IntelliJ install the Spek plugin
-    1. File > Settings > Plugins > Browse Repositories
+    1. On Linux/Windows: File > Settings > Plugins > Browse Repositories
+    1. On Mac: IntelliJ Idea > Preferences > Plugins > Browse Repositories
     2. Search "Spek"
     3. Install
     4. Restart IntelliJ
