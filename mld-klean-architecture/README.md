@@ -26,17 +26,18 @@ An "testing assumptions" analysis has been performed already for you, and is in 
 
 1. Download and install JDK 1.8 [from here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 2. Download and install IntelliJ IDEA **Community Edition** [from here](https://www.jetbrains.com/idea/download)
-3. Open project directory within the git repo "mld-klean-architecture" with IntelliJ
-4. In the import project window that opens tick "Auto Import"
-5. Inside IntelliJ install the Spek plugin
+3. Open IntelliJ and follow [this guide](http://stackoverflow.com/a/31420120) to initialize a Project Default JDK
+4. Open project directory within the git repo "mld-klean-architecture" with IntelliJ
+5. In the import project window that opens tick "Auto Import", you should also be using Gradle Wrapper configuration
+6. Inside IntelliJ install the Spek plugin
     1. File > Settings > Plugins > Browse Repositories
     2. Search "Spek"
     3. Install
     4. Restart IntelliJ
-6. Open "src > test > kotlin" in the left hand project navigator
-7. Right click "io.continuousfeedback.core.test" 
-8. and "Run 'Specs in io.continu..'"
-9. If you get a non-zero number of passing tests, you're good to go! Hurray!
+7. Open "src > test > kotlin" in the left hand project navigator
+8. Right click "io.continuousfeedback.core.test" 
+9. and "Run 'Specs in io.continu..'"
+10. If you get a non-zero number of passing tests, you're good to go! Hurray!
 
 ## Kotlin Help
 
