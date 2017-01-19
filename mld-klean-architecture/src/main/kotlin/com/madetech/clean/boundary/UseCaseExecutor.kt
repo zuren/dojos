@@ -7,10 +7,10 @@ class UseCaseExecutor(val unsafeConstructor: UnsafeConstructor) : AsynchronousUs
     override fun <U : AsynchronousUseCase<R, P>, R, P> executeUseCase(useCase: KClass<U>, request: R, presenter: P) {
         val useCaseInstance = unsafeConstructor.unsafeConstruct(useCase)
         if (useCaseInstance == null) throw Exception("Use Case Not Found")
-        useCaseInstance.execute(request, presenter)
+        (useCaseInstance as U).execute(request, presenter)
     }
 
     interface UnsafeConstructor {
-        fun <P, R, U : AsynchronousUseCase<R, P>> unsafeConstruct(useCase: KClass<in U>): AsynchronousUseCase<R, P>?
+        fun <U : AsynchronousUseCase<*, *>> unsafeConstruct(useCase: KClass<U>): AsynchronousUseCase<*, *>?
     }
 }

@@ -10,6 +10,7 @@ import io.continuousfeedback.core.usecase.CreateTeamMember.Request
 import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it
 import org.jetbrains.spek.subject.SubjectSpek
+
 class CreateTeamMemberSpec : SubjectSpek<CreateTeamMember>({
     val teamGateway: TeamGateway = InMemoryTeamRepository()
     subject { CreateTeamMember(teamGateway) }
@@ -19,7 +20,7 @@ class CreateTeamMemberSpec : SubjectSpek<CreateTeamMember>({
         beforeGroup {
             subject.execute(Request("craig@madetech.com"), object : Presenter {
                 override fun onSuccess() {
-                   successful = true
+                    successful = true
                 }
             })
         }

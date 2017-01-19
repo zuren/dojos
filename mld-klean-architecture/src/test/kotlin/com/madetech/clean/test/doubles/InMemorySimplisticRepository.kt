@@ -14,7 +14,7 @@ abstract class InMemorySimplisticRepository<T : OptionallyIdentified> {
     fun getAll(): List<T> = entities.toList()
 
     fun save(entity: T) {
-        if(entity.id == null) entity.id = id++
+        if (entity.id == null) entity.id = id++
         entities.add(entity)
     }
 

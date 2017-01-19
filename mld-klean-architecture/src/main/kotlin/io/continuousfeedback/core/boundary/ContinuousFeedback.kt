@@ -10,12 +10,11 @@ import kotlin.reflect.KClass
 abstract class ContinuousFeedback : CleanApplication() {
     abstract val teamGateway: TeamGateway
 
-    @Suppress("UNCHECKED_CAST")
-    override fun <P, R, U : AsynchronousUseCase<R, P>> unsafeConstruct(useCase: KClass<in U>): AsynchronousUseCase<R, P>? {
+    override fun <U : AsynchronousUseCase<*, *>> unsafeConstruct(useCase: KClass<U>): AsynchronousUseCase<*, *>? {
         return when (useCase) {
             RequestFeedback::class -> io.continuousfeedback.core.RequestFeedback(teamGateway)
             CreateTeamMember::class -> io.continuousfeedback.core.CreateTeamMember(teamGateway)
             else -> null
-        } as AsynchronousUseCase<R, P>?
+        }
     }
 }

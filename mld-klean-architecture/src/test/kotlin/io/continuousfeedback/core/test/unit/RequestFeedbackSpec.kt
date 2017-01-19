@@ -5,8 +5,9 @@ import io.continuousfeedback.core.RequestFeedback
 import io.continuousfeedback.core.domain.TeamMember
 import io.continuousfeedback.core.test.doubles.gateway.InMemoryTeamRepository
 import io.continuousfeedback.core.test.doubles.presenter.RequestFeedbackPresenter
-import io.continuousfeedback.core.usecase.RequestFeedback.*
+import io.continuousfeedback.core.usecase.RequestFeedback.Presenter
 import io.continuousfeedback.core.usecase.RequestFeedback.Presenter.Error.RECEIVER_NOT_FOUND
+import io.continuousfeedback.core.usecase.RequestFeedback.Request
 import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it
 import org.jetbrains.spek.subject.SubjectSpek

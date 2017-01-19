@@ -1,6 +1,6 @@
 package io.continuousfeedback.core.test.doubles.presenter
 
-import io.continuousfeedback.core.usecase.RequestFeedback.*
+import io.continuousfeedback.core.usecase.RequestFeedback.Presenter
 
 class RequestFeedbackPresenter(val onNotify: (Presenter.Notification) -> Unit,
                                val onError: (Presenter.Error) -> Unit) : Presenter {
