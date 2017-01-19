@@ -1,3 +1,5 @@
 package io.continuousfeedback.core.domain
 
-class TeamMember(val id: Int, val email: String)
+import com.madetech.clean.domain.OptionallyIdentified
+
+class TeamMember(id: Int?, val email: String) : OptionallyIdentified(id)

@@ -3,26 +3,24 @@ package io.continuousfeedback.core.test.unit
 import com.winterbe.expekt.should
 import io.continuousfeedback.core.RequestFeedback
 import io.continuousfeedback.core.domain.TeamMember
-import io.continuousfeedback.core.test.doubles.InMemoryTeamGateway
+import io.continuousfeedback.core.test.doubles.gateway.InMemoryTeamRepository
 import io.continuousfeedback.core.test.doubles.presenter.RequestFeedbackPresenter
-import io.continuousfeedback.core.usecase.RequestFeedback.Error
-import io.continuousfeedback.core.usecase.RequestFeedback.Error.RECEIVER_NOT_FOUND
-import io.continuousfeedback.core.usecase.RequestFeedback.Notification
-import io.continuousfeedback.core.usecase.RequestFeedback.Request
+import io.continuousfeedback.core.usecase.RequestFeedback.*
+import io.continuousfeedback.core.usecase.RequestFeedback.Presenter.Error.RECEIVER_NOT_FOUND
 import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it
 import org.jetbrains.spek.subject.SubjectSpek
 
 
 class RequestFeedbackSpec : SubjectSpek<RequestFeedback>({
-    val notificationsSent: MutableList<Notification> = mutableListOf()
-    val errorsPresented: MutableList<Error> = mutableListOf()
+    val notificationsSent: MutableList<Presenter.Notification> = mutableListOf()
+    val errorsPresented: MutableList<Presenter.Error> = mutableListOf()
     beforeEachTest {
         errorsPresented.clear()
         notificationsSent.clear()
     }
 
-    val teamGateway = InMemoryTeamGateway()
+    val teamGateway = InMemoryTeamRepository()
     subject { RequestFeedback(teamGateway) }
 
     fun execute(feedbackReceiverId: Int) {

@@ -4,5 +4,6 @@ import io.continuousfeedback.core.domain.TeamMember
 
 interface TeamGateway {
     fun getAll(): List<TeamMember>
-    fun find(teamMemberId: Int): TeamMember?
+    fun find(id: Int): TeamMember?
+    fun save(entity: TeamMember)
 }
