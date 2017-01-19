@@ -2,8 +2,9 @@ package io.continuousfeedback.core
 
 import io.continuousfeedback.core.domain.TeamMember
 import io.continuousfeedback.core.usecase.RequestFeedback
-import io.continuousfeedback.core.usecase.RequestFeedback.*
+import io.continuousfeedback.core.usecase.RequestFeedback.Presenter
 import io.continuousfeedback.core.usecase.RequestFeedback.Presenter.Error.RECEIVER_NOT_FOUND
+import io.continuousfeedback.core.usecase.RequestFeedback.Request
 
 class RequestFeedback(val teamGateway: TeamGateway) : RequestFeedback {
     override fun execute(request: Request, presenter: Presenter) {

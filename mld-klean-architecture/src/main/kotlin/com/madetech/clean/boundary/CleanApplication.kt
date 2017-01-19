@@ -8,7 +8,7 @@ abstract class CleanApplication : UnsafeConstructor {
     val useCaseExecutor: UseCaseExecutor
         get() = UseCaseExecutor(this)
 
-    fun <U : AsynchronousUseCase<R, P>, R, P> executeUseCase(useCase: KClass<U>, request: R, presenter: P)  {
+    fun <U : AsynchronousUseCase<R, P>, R, P> executeUseCase(useCase: KClass<U>, request: R, presenter: P) {
         useCaseExecutor.executeUseCase(useCase, request, presenter)
     }
 
