@@ -11,6 +11,6 @@ class UseCaseExecutor(val unsafeConstructor: UnsafeConstructor) : AsynchronousUs
     }
 
     interface UnsafeConstructor {
-        fun <U : AsynchronousUseCase<*, *>> unsafeConstruct(useCase: KClass<U>): AsynchronousUseCase<*, *>?
+        fun unsafeConstruct(useCase: KClass<*>): AsynchronousUseCase<*, *>?
     }
 }
