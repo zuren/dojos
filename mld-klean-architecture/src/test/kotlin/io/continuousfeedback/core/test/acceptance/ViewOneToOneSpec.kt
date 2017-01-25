@@ -6,6 +6,7 @@ import io.continuousfeedback.core.domain.TeamMember
 import io.continuousfeedback.core.test.doubles.InMemoryContinuousFeedback
 import io.continuousfeedback.core.test.doubles.presenter.RequestFeedbackPresenter
 import io.continuousfeedback.core.test.doubles.presenter.ViewNextOneToOnePresenter
+import io.continuousfeedback.core.usecase.CreateOneToOne
 import io.continuousfeedback.core.usecase.CreateTeamMember
 import io.continuousfeedback.core.usecase.RequestFeedback
 import io.continuousfeedback.core.usecase.ViewNextOneToOne
@@ -32,6 +33,16 @@ object ViewOneToOneSpec : Spek({
             )
         }
 
+        fun executeCreateOneToOne(date: String, teamMemberId: Int) {
+            continuousFeedback.executeUseCase(
+                    CreateOneToOne::class,
+                    CreateOneToOne.Request(date = date, teamMemberId = teamMemberId),
+                    object : CreateOneToOne.Presenter {
+                        override fun onSuccess () {}
+                    }
+            )
+        }
+
         fun executeViewNextOneToOne(teamMemberId: Int) {
             val presenter = ViewNextOneToOnePresenter(
                 onSuccess = {
@@ -48,8 +59,13 @@ object ViewOneToOneSpec : Spek({
 
         given("a team member with a one to one") {
             beforeGroup {
-                executeCreateTeamMember(email = "derek@madetech.com")
-                executeViewNextOneToOne(1)
+                try {
+                    executeCreateTeamMember(email = "derek@madetech.com")
+                    executeCreateOneToOne(date = "2017-01-01", teamMemberId = 1)
+                    executeViewNextOneToOne(1)
+                } catch (e: Exception) {
+                    print(e)
+                }
             }
 
             it("should return the one to one") {

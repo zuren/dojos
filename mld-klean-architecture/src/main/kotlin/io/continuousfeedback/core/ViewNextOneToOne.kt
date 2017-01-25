@@ -1,10 +1,14 @@
 package io.continuousfeedback.core
 
+import io.continuousfeedback.core.domain.OneToOne
 import io.continuousfeedback.core.usecase.ViewNextOneToOne
+import io.continuousfeedback.core.usecase.ViewNextOneToOne.Request
+import io.continuousfeedback.core.usecase.ViewNextOneToOne.Presenter
 
-class ViewNextOneToOne() : ViewNextOneToOne {
-    override fun execute(request: ViewNextOneToOne.Request, presenter: ViewNextOneToOne.Presenter) {
-        val oneToOne = ViewNextOneToOne.Presenter.OneToOne(date = "2017-01-01", teamMemberId = request.teamMemberId)
-        presenter.presentOneToOne(oneToOne)
+class ViewNextOneToOne(val oneToOneGateway: OneToOneGateway) : ViewNextOneToOne {
+    override fun execute(request: Request, presenter: Presenter) {
+        val oneToOne = oneToOneGateway.findNextForTeamMember(request.teamMemberId)
+        val formattedOneToOne = Presenter.OneToOne(date = oneToOne!!.date, teamMemberId = oneToOne!!.teamMemberId)
+        presenter.presentOneToOne(formattedOneToOne )
     }
 }
